@@ -15,9 +15,9 @@ public class EmailController {
         this.emailService = emailService;
     }
 
-    @GetMapping("/email")
-    public ResponseEntity<List<Email>> getEmails(){
-       return ResponseEntity.ok(emailService.getAllEmails());
+    @GetMapping("/message")
+    public String message(){
+        return "It works!";
     }
 
     @PostMapping("/addemail")
