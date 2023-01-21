@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("thelastages")
+//@RequestMapping("thelastages")
 public class EmailController {
     private final EmailService emailService;
 
