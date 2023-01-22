@@ -1,1 +1,1 @@
-web: java -Dserver.port=3306 $JAVA_OPTS -jar target/website-0.0.1-SNAPSHOT.jar
+web: java $JAVA_OPTS -jar target/dependency/webapp-runner.jar --port $PORT target/*.jar
