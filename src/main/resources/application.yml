@@ -5,7 +5,7 @@ spring:
     dialect: org.hibernate.dialect.PostgreSQLDialect
     show-sql: true
   datasource:
-    url: ${DATABASE_URL}
+    url: jdbc:postgresql://${HOST}:${PORT}/${DB_NAME}
     username: ${USERNAME}
     password: ${PASSWORD}
     name: ${NAME}
