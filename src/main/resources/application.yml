@@ -6,10 +6,10 @@ spring:
     dialect: org.hibernate.dialect.PostgreSQLDialect
     show-sql: true
   datasource:
-    url: jdbc:postgresql://${HOST}:${PORT}/${DB_NAME}
-    username: ${USERNAME}
-    password: ${PASSWORD}
-    driverClassName: org.postgresql.Driver
+    url: jdbc:mysql://185.107.113.9:3306/p575286_emails
+    username: p575286_Camiel
+    password: Poedersuiker9?
 #  sql:
 #    init:
 #      mode: always
+
