@@ -8,7 +8,6 @@ spring:
     url: jdbc:postgresql://${HOST}:${PORT}/${DB_NAME}
     username: ${USERNAME}
     password: ${PASSWORD}
-    name: ${NAME}
     driver-class-name: org.postgresql.Driver
 #
 #  sql:
