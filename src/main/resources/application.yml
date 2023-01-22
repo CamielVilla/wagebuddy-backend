@@ -3,12 +3,13 @@ spring:
     defer-datasource-initialization: true
     repositories:
       enabled: true
-    dialect: org.hibernate.dialect.PostgreSQLDialect
+    dialect: org.hibernate.dialect.MySQL5Dialect
     show-sql: true
   datasource:
     url: jdbc:mysql://185.107.113.9:3306/p575286_emails
     username: p575286_Camiel
     password: Poedersuiker9?
+    driver-class-name: com.mysql.jdbc.Driver
 #  sql:
 #    init:
 #      mode: always
