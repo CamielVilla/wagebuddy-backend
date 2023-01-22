@@ -2,14 +2,14 @@ spring:
   jpa:
     repositories:
       enabled: true
-    dialect: org.hibernate.dialect.MySQL5Dialect
+    dialect: org.hibernate.dialect.PostgreSQLDialect
     show-sql: true
   datasource:
-    url: jdbc:mysql://185.107.113.9:3306/p575286_emails
-    username: p575286_Camiel
-    password: Poedersuiker9?
-    name: thelastages
-    driver-class-name: com.mysql.jdbc.Driver
+    url: ${DATABASE_URL}
+    username: ${USERNAME}
+    password: ${PASSWORD}
+    name: ${NAME}
+    driver-class-name: org.postgresql.Driver
 #
 #  sql:
 #    init:
