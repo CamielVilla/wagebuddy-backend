@@ -6,7 +6,7 @@ spring:
     dialect: org.hibernate.dialect.MySQL5Dialect
     show-sql: true
   datasource:
-    url: jdbc:mysql://185.107.113.9:8080/p575286_emails
+    url: jdbc:mysql://db_ip:3306/p575286_emails",p575286_Camiel, Poedersuiker9?
     username: p575286_Camiel
     password: Poedersuiker9?
     driver-class-name: com.mysql.jdbc.Driver
