@@ -1,1 +1,1 @@
-web: java -Dserver.port=$PORT -jar target/thelastages-0.0.1-SNAPSHOT.jar
+web: java -Dserver.port=3306 -jar target/thelastages-0.0.1-SNAPSHOT.jar
