@@ -11,7 +11,7 @@ spring:
     password: Poedersuiker9?
     driver-class-name: com.mysql.jdbc.Driver
 server:
-  port: ${PORT}
+  port: $PORT
 #  sql:
 #    init:
 #      mode: always
