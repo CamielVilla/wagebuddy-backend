@@ -6,9 +6,9 @@ spring:
     dialect: org.hibernate.dialect.MySQL5Dialect
     show-sql: true
   datasource:
-    url: jdbc:mysql://185.107.113.9:3306/p575286_emails
-    username: p575286_Camiel
-    password: Poedersuiker9?
+    url: jdbc:mysql:https://www.cleardb.com/service/1.0/api:8080/heroku_e0f712f6c6c817f
+    username: b11e4b72dbb3d9
+    password: 875f48b4
     driver-class-name: com.mysql.jdbc.Driver
 #  sql:
 #    init:
