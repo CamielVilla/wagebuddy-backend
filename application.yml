@@ -10,6 +10,8 @@ spring:
     username: p575286_Camiel
     password: Poedersuiker9?
     driver-class-name: com.mysql.jdbc.Driver
+    server:
+      port: ${PORT}
 #  sql:
 #    init:
 #      mode: always
