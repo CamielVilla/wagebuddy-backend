@@ -1,4 +1,0 @@
-CREATE TABLE email(
-id BIGINT NOT NULL,
-emailAddress VARCHAR(50) NOT NULL,
-)
