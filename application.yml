@@ -1,14 +1,16 @@
 spring:
   jpa:
+    hibernate:
+      ddl-auto: create
     defer-datasource-initialization: true
     repositories:
       enabled: true
     dialect: org.hibernate.dialect.MySQL5Dialect
     show-sql: true
   datasource:
-    url: jdbc:mysql://185.107.113.9:3306/p575286_emails
-    username: p575286_Camiel
-    password: Poedersuiker9?
+    url: jdbc:mysql://us-cdbr-east-06.cleardb.net:3306/heroku_8aec0823d1784fb?
+    username: bce1adae30fe91
+    password: 7d6e39a0
     driver-class-name: com.mysql.jdbc.Driver
 #  sql:
 #    init:
