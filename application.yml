@@ -1,7 +1,7 @@
 spring:
   jpa:
-    hibernate:
-      ddl-auto: create
+ #   hibernate:
+ #     ddl-auto: create
     defer-datasource-initialization: true
     repositories:
       enabled: true
