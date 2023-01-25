@@ -13,18 +13,17 @@ public class EmailService {
         this.emailRepository = emailRepository;
     }
 
-    public EmailDto addEmail(CreateEmailDto createEmailDto) {
-        Optional<Email> optionalEmail = emailRepository.findEmailByEmailAddress(createEmailDto.getEmailAddress());
-        if(!optionalEmail.isPresent()){
+    public Boolean addEmail(CreateEmailDto dto) {
+        Optional<Email> optionalEmail = emailRepository.findEmailByEmailAddress(dto.getEmailAddress());
+        if (!optionalEmail.isPresent()) {
             Email email = new Email();
-            email.setEmailAddress(createEmailDto.getEmailAddress());
-            return toDto(emailRepository.save(email));
-        }
-   else{
-       throw new EmailAllreadyExistException(createEmailDto.getEmailAddress());
+            email.setEmailAddress(dto.getEmailAddress());
+            emailRepository.save(email);
+            return true;
+        }else {
+            return false;
         }
     }
-
     public EmailDto toDto (Email email){
         EmailDto dto = new EmailDto();
         dto.setEmailAddress(email.getEmailAddress());
@@ -35,4 +34,5 @@ public class EmailService {
    public List<Email> getAllEmails(){
         return emailRepository.findAll();
    }
+
 }
