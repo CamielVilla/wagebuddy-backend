@@ -1,8 +1,8 @@
 spring:
   jpa:
     hibernate:
-      ddl-auto: create
-    defer-datasource-initialization: none
+      ddl-auto: none
+    defer-datasource-initialization: true
     repositories:
       enabled: true
     dialect: org.hibernate.dialect.MySQL5Dialect
