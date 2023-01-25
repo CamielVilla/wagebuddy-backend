@@ -15,13 +15,8 @@ public class EmailController {
         this.emailService = emailService;
     }
 
-    @GetMapping("/message")
-    public String message(){
-        return "It works!";
-    }
-
     @PostMapping("/addemail")
-    public ResponseEntity<EmailDto> addEmail (@Valid @RequestBody CreateEmailDto dto) {
+    public ResponseEntity<Boolean> addEmail (@Valid @RequestBody CreateEmailDto dto) {
         return ResponseEntity.ok(emailService.addEmail(dto));
     }
 }
