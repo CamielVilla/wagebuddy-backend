@@ -1,4 +1,4 @@
-package nl.thelastages.website;
+package nl.thelastages.website.configuration;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
