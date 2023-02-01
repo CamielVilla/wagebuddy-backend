@@ -65,6 +65,15 @@
       <version>3.10.1</version>
       <type>maven-plugin</type>
     </dependency>
+    <dependency>
+      <groupId>org.springframework.boot</groupId>
+      <artifactId>spring-boot-starter-mail</artifactId>
+      <version>3.0.2</version>
+    </dependency>
+    <dependency>
+      <groupId>org.projectlombok</groupId>
+      <artifactId>lombok</artifactId>
+    </dependency>
   </dependencies>  
   <build> 
     <plugins>
@@ -72,36 +81,6 @@
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-maven-plugin</artifactId>
       </plugin>
-<!--      <plugin>-->
-<!--        <groupId>com.microsoft.azure</groupId>-->
-<!--        <artifactId>azure-webapp-maven-plugin</artifactId>-->
-<!--        <version>2.2.0</version>-->
-<!--        <configuration>-->
-<!--          <schemaVersion>v2</schemaVersion>-->
-<!--          <subscriptionId>a67de65c-4207-4b6e-b5a8-906b42b70299</subscriptionId>-->
-<!--          <resourceGroup>lastages-group</resourceGroup>-->
-<!--          <appName>thelastages</appName>-->
-<!--          <pricingTier>F1</pricingTier>-->
-<!--          <region>westeurope</region>-->
-<!--          <appServicePlanName>ASP-lastagesgroup-8244</appServicePlanName>-->
-<!--          <appServicePlanResourceGroup>lastages-group</appServicePlanResourceGroup>-->
-<!--          <runtime>-->
-<!--            <os>Windows</os>-->
-<!--            <javaVersion>17</javaVersion>-->
-<!--            <webContainer>Java SE</webContainer>-->
-<!--          </runtime>-->
-<!--          <deployment>-->
-<!--            <resources>-->
-<!--              <resource>-->
-<!--                <directory>${project.basedir}/target</directory>-->
-<!--                <includes>-->
-<!--                  <include>*.jar</include>-->
-<!--                </includes>-->
-<!--              </resource>-->
-<!--            </resources>-->
-<!--          </deployment>-->
-<!--        </configuration>-->
-<!--      </plugin>-->
     </plugins>
   </build> 
 </project>

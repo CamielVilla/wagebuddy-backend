@@ -1,9 +1,9 @@
-package nl.thelastages.website;
+package nl.thelastages.website.model.dto;
 
 import jakarta.annotation.Nonnull;
 import jakarta.validation.constraints.Email;
 
-public class CreateEmailDto {
+public class CreateUserDto {
     @Nonnull
     @Email
     private String emailAddress;
