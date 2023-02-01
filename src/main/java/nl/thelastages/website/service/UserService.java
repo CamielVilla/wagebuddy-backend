@@ -2,14 +2,20 @@ package nl.thelastages.website.service;
 
 import jakarta.mail.*;
 import jakarta.mail.internet.MimeMessage;
+import nl.thelastages.website.configuration.EmailConfiguration;
+//import nl.thelastages.website.configuration.SmtpAuthenticator;
 import nl.thelastages.website.model.dto.CreateUserDto;
 import nl.thelastages.website.model.dto.UserDto;
 import nl.thelastages.website.model.entity.User;
 import nl.thelastages.website.respository.UserRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.PropertySource;
+import org.springframework.core.env.Environment;
+import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.mail.javamail.JavaMailSenderImpl;
+import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 
 import java.util.Date;
@@ -20,51 +26,64 @@ import java.util.Properties;
 @Service
 public class UserService implements IUserService{
     UserRepository userRepository;
+    EmailConfiguration emailConfiguration;
 
+    @Value("${spring.mail.username}")
     private String userName;
-    public UserService(UserRepository userRepository) {
+
+    @Value("${spring.mail.password}")
+    private String password;
+
+
+
+    @Autowired
+    JavaMailSender sender;
+
+
+
+    public UserService(UserRepository userRepository, EmailConfiguration emailConfiguration) {
         this.userRepository = userRepository;
+        this.emailConfiguration = emailConfiguration;
     }
 
     public Boolean addEmail(CreateUserDto dto) {
+        System.out.println(userName);
+        System.out.println(password);
         Optional<User> optionalEmail = userRepository.findEmailByEmail(dto.getEmailAddress());
         if (!optionalEmail.isPresent()) {
             User user = new User();
             user.setEmail(dto.getEmailAddress());
-            JavaMailSenderImpl sender = new JavaMailSenderImpl();
             Properties props = new Properties();
             props.setProperty("mail.transport.protocol", "smtp");
-            props.setProperty("mail.host", "smtp.gmail.com");
+            props.setProperty("mail.host", "smtp.hostnet.nl");
             props.put("mail.smtp.auth", "true");
             props.put("mail.smtp.port", "587");
-            props.put("mail.smtp.socketFactory.port", "465");
-            props.put("mail.smtp.socketFactory.class","javax.net.ssl.SSLSocketFactory");
-            props.put("mail.smtp.socketFactory.fallback", "false");
-            props.put("mail.username", "camielvilla@gmail.com");
-            props.put("mail.password", "");
-            sender.setJavaMailProperties(props);
-            Session session = Session.getInstance(props, new Authenticator() {
-                protected PasswordAuthentication getPasswordAuthentication() {
-                    return new PasswordAuthentication("camielvilla@gmail.com", "brvloeuswhwfwqkl");
+            props.put("mail.smtp.starttls.enabled", true);
+
+            Session session = Session.getDefaultInstance(props, new Authenticator() {
+                @Override
+                protected PasswordAuthentication getPasswordAuthentication(){
+                    return new PasswordAuthentication(userName, password);
                 }
             });
             try{
                 MimeMessage msg = new MimeMessage(session);
-                msg.setFrom();
+                msg.setFrom("info@thelastages.com");
                 msg.setRecipients(Message.RecipientType.TO,
-                        "camielvilla@gmail.com");
-                msg.setSubject("JavaMail hello world example3");
+                        dto.getEmailAddress());
+                msg.setSubject("Thank you for your interest");
                 msg.setSentDate(new Date());
-                msg.setText("Hello, world!\n");
+                msg.setText("Aaaahh koop ons spel\n");
                 Transport.send(msg);
+                userRepository.save(user);
+                return true;
             }catch (MessagingException mex){
                 System.out.println("send failed, exception: " + mex);
             }
-            userRepository.save(user);
-            return true;
         }else {
             return false;
         }
+       return false;
     }
 
 
