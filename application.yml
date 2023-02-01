@@ -1,8 +1,10 @@
 spring:
   mail:
-    host:
-    port:
-    userName:
+    username: camielvilla@gmail.com
+    properties:
+      mail:
+        smtp:
+          auth: 'true'
     password:
   jpa:
     hibernate:
