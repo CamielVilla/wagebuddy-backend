@@ -8,14 +8,6 @@ public class User {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String email;
-    @Column(name = "enabled")
-    private boolean enabled;
-
-    public User(){
-        super();
-        this.enabled=false;
-    }
-
 
     public Long getId() {
         return id;
@@ -33,11 +25,4 @@ public class User {
         this.email = email;
     }
 
-    public boolean isEnabled() {
-        return enabled;
-    }
-
-    public void setEnabled(boolean enabled) {
-        this.enabled = enabled;
-    }
 }
