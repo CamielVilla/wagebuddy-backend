@@ -48,7 +48,7 @@ public class UserService implements IUserService{
             "    We want to thank you for your interest in The Last Ages. As for this moment we are working hard to finish our\n" +
             "    board game. We plan to launch later this year and would love to keep you updated on the process.<br><br>\n" +
             "    A pre-order opportunity is coming soon to make sure you are one of the first people on earth that can play a real-time strategy game\n" +
-            "    within the comfort of your one home gathered by your friends and family.<br><br>\n" +
+            "    within the comfort of your own home gathered by your friends and family.<br><br>\n" +
             "    Do you wish to receive more information about the game or have some cool ideas? Please don't hesitate to contact us.<br><br>\n" +
             "    Kind Regards,<br><br>\n" +
             "    Camiel, Jasper, Ruben & Yuri<br>\n" +
