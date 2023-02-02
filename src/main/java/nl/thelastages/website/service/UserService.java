@@ -34,8 +34,6 @@ public class UserService implements IUserService{
     @Value("${spring.mail.password}")
     private String password;
 
-
-
     @Autowired
     JavaMailSender sender;
 
@@ -46,9 +44,20 @@ public class UserService implements IUserService{
         this.emailConfiguration = emailConfiguration;
     }
 
+    private static final String MESSAGE = "<html><head></head><body><p>Dear board game fanatic, <br><br>\n" +
+            "    We want to thank you for your interest in The Last Ages. As for this moment we are working hard to finish our\n" +
+            "    board game. We plan to launch later this year and would love to keep you updated on the process.<br><br>\n" +
+            "    A pre-order opportunity is coming soon to make sure you are one of the first people on earth that can play a real-time strategy game\n" +
+            "    within the comfort of your one home gathered by your friends and family.<br><br>\n" +
+            "    Do you wish to receive more information about the game or have some cool ideas? Please don't hesitate to contact us.<br><br>\n" +
+            "    Kind Regards,<br><br>\n" +
+            "    Camiel, Jasper, Ruben & Yuri<br>\n" +
+            "    info@thelastages.com\n" +
+            "</p></body></html>";
+
+    private static final String ENCODE = "text/html; charset=UTF-8";
+
     public Boolean addEmail(CreateUserDto dto) {
-        System.out.println(userName);
-        System.out.println(password);
         Optional<User> optionalEmail = userRepository.findEmailByEmail(dto.getEmailAddress());
         if (!optionalEmail.isPresent()) {
             User user = new User();
@@ -71,9 +80,10 @@ public class UserService implements IUserService{
                 msg.setFrom("info@thelastages.com");
                 msg.setRecipients(Message.RecipientType.TO,
                         dto.getEmailAddress());
-                msg.setSubject("Thank you for your interest");
+                msg.setSubject("Thank you for your interest The Last Ages");
                 msg.setSentDate(new Date());
-                msg.setText("Aaaahh koop ons spel\n");
+                msg.setText(MESSAGE);
+                msg.setHeader("Content-Type", ENCODE);
                 Transport.send(msg);
                 userRepository.save(user);
                 return true;

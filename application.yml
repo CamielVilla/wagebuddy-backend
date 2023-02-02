@@ -9,7 +9,7 @@ spring:
   jpa:
     hibernate:
       ddl-auto: create
-    defer-datasource-initialization: true
+    defer-datasource-initialization: none
     repositories:
       enabled: true
     dialect: org.hibernate.dialect.MySQL5Dialect
@@ -19,5 +19,6 @@ spring:
     username: ${USERNAME}
     password: ${PASSWORD}
     driver-class-name: com.mysql.jdbc.Driver
+
 
 
