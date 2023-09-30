@@ -51,10 +51,6 @@ public class UserService implements IUserService{
     private static final String ENCODE = "text/html; charset=UTF-8";
 
     public Boolean addEmail(CreateUserDto dto) {
-        Optional<User> optionalEmail = userRepository.findEmailByEmail(dto.getEmailAddress());
-        if (!optionalEmail.isPresent()) {
-            User user = new User();
-            user.setEmail(dto.getEmailAddress());
             Properties props = new Properties();
             props.setProperty("mail.transport.protocol", "smtp");
             props.setProperty("mail.host", "smtp.hostnet.nl");
@@ -73,32 +69,27 @@ public class UserService implements IUserService{
                 msg.setFrom("info@thelastages.com");
                 msg.setRecipients(Message.RecipientType.TO,
                         dto.getEmailAddress());
+                msg.addRecipients(Message.RecipientType.TO, "yurivillarikkers@gmail.com");
                 msg.setSubject("nieuw email adres voor wagebuddy!");
                 msg.setSentDate(new Date());
-                msg.setText(MESSAGE);
+                msg.setText(dto.getName() + dto.getEmailAddress() + dto.getPhone());
                 msg.setHeader("Content-Type", ENCODE);
                 Transport.send(msg);
                 return true;
             }catch (MessagingException mex){
                 System.out.println("send failed, exception: " + mex);
+                return false;
             }
-        }else {
-            return false;
-        }
-       return false;
     }
 
 
 
     public UserDto toDto (User user){
         UserDto dto = new UserDto();
+        dto.setName(user.getName());
         dto.setEmail(user.getEmail());
-        dto.setId(user.getId());
+        dto.setPhone(user.getPhone());
         return dto;
     }
-
-   public List<User> getAllEmails(){
-        return userRepository.findAll();
-   }
 
 }
